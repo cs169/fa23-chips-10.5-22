@@ -16,13 +16,12 @@ class Representative < ApplicationRecord
           ocdid_temp = office.division_id
         end
       end
-      
-      if(!Representative.where(name: official.name, ocdid: ocdid_temp, title: title_temp).exists?)
+      if Representative.exists?(name: official.name, ocdid: ocdid_temp, title: title_temp)
+        reps.push(Representative.find_by(name: official.name, ocdid: ocdid_temp, title: title_temp))
+      else
         rep = Representative.create!({ name: official.name, ocdid: ocdid_temp,
           title: title_temp })
         reps.push(rep)
-      else 
-        reps.push(Representative.find_by(name: official.name, ocdid: ocdid_temp, title: title_temp))
       end
     end
 
