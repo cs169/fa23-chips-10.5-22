@@ -16,6 +16,7 @@ class Representative < ApplicationRecord
           ocdid_temp = office.division_id
         end
       end
+
       if Representative.exists?(name: official.name, ocdid: ocdid_temp, title: title_temp)
         reps.push(Representative.find_by(name: official.name, ocdid: ocdid_temp, title: title_temp))
       else
@@ -24,7 +25,6 @@ class Representative < ApplicationRecord
         reps.push(rep)
       end
     end
-
     reps
   end
 end
