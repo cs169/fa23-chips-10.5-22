@@ -1,13 +1,20 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe Representative do
   describe 'should not add duplicate representatives' do
-    rep_info = Hash.new
-    rep_info[:officials] = {name: "Person"}
-    rep_info[:offices] = [{name: "title", division_id: "ocdid", official_indices: [0]}]
-    represntative_one = Representative.create!({ name: "Person", ocdid: "ocdid",
-          title: "title"})
-    Representative.civic_api_to_representative_params(rep_info)
-    expect(Representative.count).to eq(1)
+    official = OpenStruct.new({ name: 'Person' })
+    office = OpenStruct.new({ name: 'title', division_id: 'ocdid', official_indices: [0] })
+    rep_info = OpenStruct.new({ officials: [official], offices: [office] })
+    described_class.civic_api_to_representative_params(rep_info)
+    it 'is one' do
+      expect(described_class.count).to eq(1)
+    end
+
+    described_class.civic_api_to_representative_params(rep_info)
+    it 'stills be one' do
+      expect(described_class.count).to eq(1)
+    end
   end
 end
