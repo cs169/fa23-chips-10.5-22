@@ -4,7 +4,7 @@
 
 require 'simplecov'
 SimpleCov.start 'rails' do
-    add_filter 'lib'
+  add_filter 'lib'
 end
 
 if ENV['CI']
