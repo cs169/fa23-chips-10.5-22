@@ -1,3 +1,12 @@
-<p>Name: <%= @representative.name %></p>
+<center>
+<img src="<%= @representative.photo_link %>" width="300" height="400">
+<p><strong><%= @representative.name %></strong></p>
 <p>OCD ID: <%= @representative.ocdid %></p>
 <p>Office: <%= @representative.title %></p>
+<p>Political Party: <%= @representative.party %></p>
+<p><strong>Address:</strong></p>
+<p>Street: <%= @representative.street %></p>
+<p>City: <%= @representative.city %></p>
+<p>State: <%= @representative.state %></p>
+<p>ZIP: <%= @representative.zip %></p>
+</center>
