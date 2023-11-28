@@ -6,6 +6,7 @@ $(document).ready(() => {
     const countyFipsCode = stateMap.infoContainer.attr('county-std-fips-code');
     d3.json(stateMap.topojsonUrl).then((topology) => {
         const mapAssets = stateMapUtils.parseTopojson(stateMap, topology);
+        console.log(mapAssets.geojson.features);
         stateMap.svgElement.selectAll('path')
             .data(mapAssets.geojson.features)
             .enter()
@@ -19,9 +20,13 @@ $(document).ready(() => {
                 return '';
             })
             .attr('data-county-name', (d) => stateMap.counties[d.properties.COUNTYFP].name)
-            .attr('data-county-fips-code', (d) => d.properties.COUNTYFP);
-
+            .attr('data-county-fips-code', (d) => d.properties.COUNTYFP)
+            .on('click', function(event, f) { //###############
+              const data = mapAssets.geojson.features[f];
+              const searchPath = `/search/address=${stateMap.counties[data.properties.COUNTYFP].name}`;
+              window.location.href = searchPath; // Navigate to the search URL  
+            }) //###################
         // We dont want to enable clicking in the county view.
-        // stateMapUtils.setupEventHandlers(stateMap);
+        //stateMapUtils.setupEventHandlers(stateMap);
     });
 });
