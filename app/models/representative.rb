@@ -7,39 +7,39 @@ class Representative < ApplicationRecord
     reps = []
 
     rep_info.officials.each_with_index do |official, index|
-      ocdid_temp = ''
-      title_temp = ''
-      street_t = ''
-      state_t = ''
-      zip_t = ''
-      city_t = ''
-
-      rep_info.offices.each do |office|
-        if office.official_indices.include? index
-          title_temp = office.name
-          ocdid_temp = office.division_id
-        end
-      end
-
-      begin
-        street_t = official.address[0].line1
-        city_t = official.address[0].city
-        zip_t = official.address[0].zip
-        state_t = official.address[0].state
-      rescue
-        street_t = 'Not found'
-        state_t = 'Not found'
-        zip_t = 'Not found'
-        city_t = 'Not found'
-      end
-
-      url = official.photo_url
-
-      rep = Representative.find_or_create_by({ name: official.name, ocdid: ocdid_temp,
-          title: title_temp, photo_link: url, party: official.party,
-          street: street_t, city: city_t, state: state_t, zip: zip_t })
+      rep = find_or_create_official(rep_info, official, index)
       reps.push(rep)
     end
     reps
+  end
+
+  def self.find_or_create_official(rep_info, official, index)
+    street_t = 'Not found'
+    state_t = 'Not found'
+    zip_t = 'Not found'
+    city_t = 'Not found'
+
+    title_temp, ocdid_temp = get_office_info(rep_info, index)
+
+    unless official.address.nil?
+      street_t = official.address[0].line1
+      city_t = official.address[0].city
+      zip_t = official.address[0].zip
+      state_t = official.address[0].state
+    end
+
+    Representative.find_or_create_by({ name: official.name, ocdid: ocdid_temp,
+        title: title_temp, photo_link: official.photo_url, party: official.party,
+        street: street_t, city: city_t, state: state_t, zip: zip_t })
+  end
+
+  def self.get_office_info(rep_info, index)
+    rep_info.offices.each do |office|
+      next unless office.official_indices.include? index
+
+      title_temp = office.name
+      ocdid_temp = office.division_id
+      return title_temp, ocdid_temp
+    end
   end
 end
