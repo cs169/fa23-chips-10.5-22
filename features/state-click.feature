@@ -10,6 +10,6 @@ Feature: Display Representatives on County Click
 
   Scenario: User clicks on a county and sees its representatives
     Given I am on a state map page
-    When I click on a county with the FIPS code "12345"
+    When I click on a county with the FIPS code "045"
     Then I should be redirected to the search page
-    And I should see representatives for county "12345"
+    And I should see representatives for county "045"
