@@ -27,7 +27,7 @@ class MapController < ApplicationController
 
     @county_details = @state.counties.index_by(&:std_fips_code)
 
-    address = @county.name + ", " + @state.name
+    address = "#{@county.name}, #{@state.name}"
     service = Google::Apis::CivicinfoV2::CivicInfoService.new
     service.key = Rails.application.credentials[:GOOGLE_API_KEY]
     result = service.representative_info_by_address(address: address)
