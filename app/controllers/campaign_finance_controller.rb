@@ -1,7 +1,7 @@
-class CampaignFinanceController < ApplicationController
-  def index
-  end
+# frozen_string_literal: true
 
-  def search
-  end
+class CampaignFinanceController < ApplicationController
+  def index; end
+
+  def search; end
 end
