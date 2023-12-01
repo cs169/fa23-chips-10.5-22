@@ -1,2 +1,22 @@
-%h1 CampaignFinance#index
-%p Find me in app/views/campaign_finance/index.html.haml
+.row.mt-2
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        %h1.text-center Search for Campaign Finances
+    .col-12.col-md-6.offset-md-3.col-xl-4.offset-xl-4
+        = form_tag search_campaign_finance_path, method: :get do
+            .form-group.row
+                .col-md-4
+                    %label.col-form-label
+                        Select a cycle:
+                .col-md-6
+                    = select 'search_terms', 'cycle', @cycles_list, { include_blank: true },
+                    class: 'form-control'
+            .form-group.row
+                .col-md-4
+                    %label.col-form-label
+                        Select a category:
+                .col-md-6
+                    = select 'search_terms', 'category', @categories_list, { include_blank: true },
+                    class: 'form-control'
+
+            .actions
+                = submit_tag 'Search', class: 'btn btn-primary'
