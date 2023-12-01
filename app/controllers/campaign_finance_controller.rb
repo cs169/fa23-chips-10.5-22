@@ -2,8 +2,9 @@
 
 class CampaignFinanceController < ApplicationController
   def index
-    @cycles_list = ["2010", "2012", "2014", "2016", "2018", "2020"]
-    @categories_list = ["candidate-loan", "contribution-total", "debts-owed", "disbursements-total", "end-cash", "individual-total", "pac-total", "receipts-total", "refund-total"]
+    @cycles_list = %w[2010 2012 2014 2016 2018 2020]
+    @categories_list = %w[candidate-loan contribution-total debts-owed disbursements-total end-cash
+                          individual-total pac-total receipts-total refund-total]
   end
 
   def search
@@ -16,7 +17,7 @@ class CampaignFinanceController < ApplicationController
       req.headers['X-API-Key'] = api_key
     end
     response = JSON.parse(reply.body)
-    puts response
-    #TODO Add results to an instance variable and render them on the search.html.haml page.
+    Rails.logger.debug response
+    # TODO: Add results to an instance variable and render them on the search.html.haml page.
   end
 end
