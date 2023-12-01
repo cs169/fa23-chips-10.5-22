@@ -12,6 +12,7 @@ Then I should see "Search for Campaign Finances"
 When I select "2010" from "search_terms_cycle"
 And I select "candidate-loan" from "search_terms_category"
 And I press "Search"
-#TODO Add expected search results
+#TODO Add expected search results (might need Faraday)
+Then I should see "CampaignFinance#search"
 
   
