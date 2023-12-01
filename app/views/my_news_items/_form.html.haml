@@ -28,5 +28,11 @@
         .col-sm-10
             = select :news_item, :representative_id, representatives_list, { include_blank: true },
             class: 'form-control'
+    .form-group.row
+        .col-sm-2
+        = label :news_item, :issue, 'Issue', class: 'col-form-label'
+        .col-sm-10
+        = select :news_item, :issue, NewsItem.issues.keys.map { |i| [i.humanize, i] }, { include_blank: true }, class: 'form-control'
+
     .actions
         = f.submit 'Save', class: 'btn btn-primary'
