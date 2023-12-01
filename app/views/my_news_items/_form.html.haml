@@ -30,9 +30,9 @@
             class: 'form-control'
     .form-group.row
         .col-sm-2
-        = label :news_item, :issues, 'Issue', class: 'col-form-label'
+            = label :news_item, :issues, 'Issue', class: 'col-form-label'
         .col-sm-10
-        = select :news_item, :issues, NewsItem.issues.keys.map { |i| [i.humanize, i] }, { include_blank: true }, class: 'form-control'
+            = select :news_item, :issues, NewsItem.issues.keys, { include_blank: true }, class: 'form-control'
 
     .actions
         = f.submit 'Save', class: 'btn btn-primary'
