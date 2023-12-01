@@ -1,0 +1,2 @@
+module CampaignFinanceHelper
+end
