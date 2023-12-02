@@ -59,3 +59,23 @@ Scenario: Adding news article with issue
   And I press "commit"
   Then I should see "News item was successfully created."
   And I should see "Terrorism"
+
+Scenario: User should see issue column after a news article with an issue is added
+  When I am on the representatives page
+  And I fill in "address" with "Dallas"
+  And I press "commit"
+  Then I should see "Ted Cruz"
+  And I follow "news-Ted Cruz"
+  Then I should see "Listing News Articles for"
+  And I should see "Ted Cruz"
+  Then I follow "Add News Article"
+  And I should see "Edit news article"
+  When I fill in "news_item_title" with "Example"
+  And I fill in "news_item_link" with "https://www.tedcruz.com"
+  And I fill in "news_item_description" with "Description of Ted Cruz doing somethin in Texas"
+  And I select "Ted Cruz" from "news_item_representative_id"
+  And I select "Immigration" from "news_item_issues"
+  And I press "commit"
+  Then I should see "News item was successfully created."
+  When I follow "View all articles"
+  And I should see "Immigration"
