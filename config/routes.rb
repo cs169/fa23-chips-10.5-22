@@ -3,7 +3,7 @@
 # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 Rails.application.routes.draw do
     #get 'campaign_finance/index'
-    get 'campaign_finance' => 'campaign_finance#index', :as => 'campaign_finance_path'
+    get 'campaign_finance' => 'campaign_finance#index', :as => 'campaign_finance'
     get 'campaign_finance/search' => 'campaign_finance#search', :as => 'search_campaign_finance'
 
     get '/login' => 'login#login', :as => :login
