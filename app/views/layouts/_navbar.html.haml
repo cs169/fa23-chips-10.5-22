@@ -11,7 +11,7 @@
         %ul.navbar-nav.mr-auto
             - ApplicationHelper.nav_items.each do |item|
                 %li.nav-item.py-1.text-center{ class: ApplicationHelper.active(controller_name, item[:link]) }
-                    %a.nav-link.text-white{ href: item[:link].to_s }
+                    %a.nav-link.text-white{ href: item[:link].to_s, id: "link-#{item[:link]}" }
                         = item[:title]
                         - if current_page? item[:link]
                             %span.sr-only (current)
