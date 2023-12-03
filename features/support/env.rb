@@ -72,7 +72,6 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
-
 Before('@load-seed-data') do
-  load File.join(Rails.root, 'db', 'seeds.rb')
+  load Rails.root.join 'db/seeds.rb'
 end
