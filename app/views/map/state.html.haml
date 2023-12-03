@@ -36,7 +36,7 @@
                                             %td
                                                 = link_to 'View', county_path(state_symbol: @state.symbol,
                                                 std_fips_code: county.std_fips_code),
-                                                class: 'btn btn-primary'
+                                                class: 'btn btn-primary', id: "view-#{county.name}"
 #actionmap-info-box
 #actionmap-info-container{ 'data-counties': @county_details.to_json, 'data-state': @state.to_json,
 'data-state-topojson-file': asset_path("states/#{@state[:symbol].downcase}.topo.json") }
