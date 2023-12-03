@@ -8,16 +8,10 @@ class CampaignFinanceController < ApplicationController
   end
 
   def search
-    api_key = Rails.application.credentials[:PROPUBLICA_API_KEY]
     cycle = params[:search_terms][:cycle]
     category = params[:search_terms][:category]
-    url = "https://api.propublica.org/campaign-finance/v1/#{cycle}/candidates/leaders/#{category}.json"
-    connection = Faraday::Connection.new url
-    reply = connection.get do |req|
-      req.headers['X-API-Key'] = api_key
-    end
-    response = JSON.parse(reply.body)
-    Rails.logger.debug response
-    # TODO: Add results to an instance variable and render them on the search.html.haml page.
+    @campaign_finance_search_results = CampaignFinance.get_propublica_results(cycle, category)
+    redirect_to campaign_finance_path if @campaign_finance_search_results.nil?
+    # TODO: Use results of the @@campaign_finance_search_results variable and render them on the search.html.haml page.
   end
 end
