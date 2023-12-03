@@ -45,6 +45,7 @@ $(document).ready(() => {
             .append('path')
             .attr('class', 'actionmap-view-region')
             .attr('d', path)
+            .attr('id', (d) => d.properties.NAME)
             .attr('data-state-name', (d) => d.properties.NAME)
             .attr('data-state-fips-code', (d) => d.properties.STATEFP)
             .attr('data-state-symbol', (d) => d.properties.STUSPS);

@@ -53,6 +53,10 @@ When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
 end
 
+# When /^(?:|I )press map "([^"]*)"$/ do |button|
+#   page.find(:xpath, "//path[@id='California']").click
+# end
+
 When /^(?:|I )follow "([^"]*)"$/ do |link|
   click_link(link)
 end
@@ -252,27 +256,3 @@ end
 Then /^show me the page$/ do
   save_and_open_page
 end
-
-#Given('the application has loaded the national map with counties') do
-#  # Assuming there's a specific path to visit the national map page
-#  visit '/root' # Replace with the actual path to your map page
-#  # Add any necessary checks to ensure the map is fully loaded
-#  # Example: expect(page).to have_css('#map-container')
-#end
-#Given('I click on a state') do
-#  # Replace '.state-element' with the actual selector for a state element on the map
-#  find('.state-element', match: :first).click
-#end
-#When('I click on a county with the FIPS code {string}') do |fips_code|
-#  # Replace '.county-element' with the actual selector and use the FIPS code to find the specific county
-#  find(".county-element[data-fips-code='#{fips_code}']").click
-#end
-#Then('I should be redirected to the search page') do
-#  # Replace '/search' with the actual path or URL of your search page
-#  expect(current_path).to eq('/search')
-#end
-#Then('I should see representatives for county {string}') do |county|
-#  # Example check, replace with appropriate content or selector
-#  expect(page).to have_content("Representatives for #{county}")
-#end
-
