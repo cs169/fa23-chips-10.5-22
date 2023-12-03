@@ -75,5 +75,3 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 Before('@load-seed-data') do
   load Rails.root.join 'db/seeds.rb'
 end
-
-Capybara.javascript_driver = :webkit

@@ -53,8 +53,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
 
-  gem 'capybara-webkit'
-
   # Guard Plugins
   gem 'guard'
   gem 'guard-cucumber', require: false

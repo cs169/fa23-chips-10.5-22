@@ -5,8 +5,6 @@ Feature: Using the Map
   I want to click on a county on the map and see a list of representatives for that county
 
 @load-seed-data
-@javascript
 Scenario: Basic map clicking
   When I am on the home page
-  Then show me the page
   And I press map "California"
