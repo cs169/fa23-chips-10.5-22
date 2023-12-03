@@ -12,8 +12,8 @@ class CampaignFinance < ApplicationRecord
   end
 
   def self.parse_propublica_results(replybody)
-    response = JSON.parse(replybody)
-    response
+    JSON.parse(replybody)
+
     # @campaign_finance_search_results = response
   rescue JSON::ParserError
     # @campaign_finance_search_results = nil
