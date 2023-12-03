@@ -1,6 +1,6 @@
 Feature: Access news stories and manipulate them
 
-  As an user of actionmap
+  As a user of actionmap
   So that I can learn more about elected officials
   I want to be able to view and interact with news about them
 
@@ -22,7 +22,7 @@ Scenario: Accessing news
   Then I should see "Listing News Articles for"
   And I should see "Carolyn G. Goodman"
 
-Scenario: adding news
+Scenario: adding news and updating with issue
   When I am on the representatives page
   And I fill in "address" with "Las Vegas"
   And I press "commit"
@@ -40,6 +40,11 @@ Scenario: adding news
   Then I should see "News item was successfully created."
   When I follow "View all articles"
   Then I should see "Description of article"
+  When I follow "Edit"
+  Then I should see "Edit news article"
+  And I select "Free Speech" from "news_item_issues"
+  And I press "commit"
+  Then I should see "Free Speech"
 
 Scenario: Adding news article with issue
   When I am on the representatives page
