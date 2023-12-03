@@ -12,6 +12,6 @@ class CampaignFinanceController < ApplicationController
     category = params[:search_terms][:category]
     @campaign_finance_search_results = CampaignFinance.get_propublica_results(cycle, category)
     redirect_to campaign_finance_path if @campaign_finance_search_results.nil?
-    # TODO: Use results of the @@campaign_finance_search_results variable and render them on the search.html.haml page.
+    # TODO: Use results of the @campaign_finance_search_results variable and render them on the search.html.haml page.
   end
 end
