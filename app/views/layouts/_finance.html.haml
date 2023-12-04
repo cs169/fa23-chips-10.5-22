@@ -1,0 +1,31 @@
+- if not representatives.nil?
+  .container-fluid
+    .row
+      .col-md-8.offset-md-2
+        .table-responsive-md.pt-5
+          %table.table.table-striped.table-hover#events
+            %caption Top Representatives for #{@cycle} and #{@category}
+            %thead.thead-dark
+              %tr
+                %th Name
+                %th Party
+                %th State
+                %th District
+                %th Total from Individuals
+                %th Total from PACs
+                %th Candidate Loans
+                %th Total Disbursements
+
+            %tbody
+              - representatives.each do |rep|
+                %tr
+                  %td= rep["name"]
+                  %td= rep["party"]
+                  %td= rep["state"][7, 2]
+                  %td= rep["district"]
+                  %td= rep["total_from_individuals"]
+                  %td= rep["total_from_pacs"]
+                  %td= rep["candidate_loans"]
+                  %td= rep["total_disbursements"]
+- else
+  %p No Results Found
