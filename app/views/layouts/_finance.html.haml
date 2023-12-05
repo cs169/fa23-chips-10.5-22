@@ -1,0 +1,61 @@
+- if representatives.nil?
+    %p No Results Found
+- else
+    .container-fluid
+        .row
+            .col-md-8.offset-md-2
+                .table-responsive-md.pt-5
+                    %style
+                        :css
+                            #events {
+                                width: 100%;
+                                margin: auto;
+                            }
+                            #events td, #events th {
+                                padding: 5px;
+                            text-align: center;
+                                font-size: 14px;
+                            }
+                            .table-responsive-md {
+                                overflow-x: auto;
+                            }
+                    %table.table.table-striped.table-hover#events
+                        %caption Top Representatives for #{cycle} and #{category}
+                        %thead.thead-dark
+                            %tr
+                                %th Name
+                                %th Party
+                                %th State
+                                %th District
+                                %th Status
+                                %th Total from Individuals
+                                %th Total from PACs
+                                %th Total Contributions
+                                %th Candidate Loans
+                                %th Total Disbursements
+                                %th Begin Cash
+                                %th End Cash
+                                %th Total Refunds
+                                %th Debts owed
+                                %th Date Coverage From
+                                %th Date Coverage To
+
+                        %tbody
+                            - representatives.each do |rep|
+                                %tr
+                                    %td= rep['name'].nil? ? 'No Data' : rep['name']
+                                    %td= rep['party'].nil? ? 'No Data' : rep['party']
+                                    %td= rep['state'] ? rep['state'][7, 2] : 'No Data'
+                                    %td= rep['district'].nil? ? 'No Data' : rep['district']
+                                    %td= rep['status'].nil? ? 'No Data' : rep['status']
+                                    %td= rep['total_from_individuals'].nil? ? 'No Data' : rep['total_from_individuals']
+                                    %td= rep['total_from_pacs'].nil? ? 'No Data' : rep['total_from_pacs']
+                                    %td= rep['total_contributions'].nil? ? 'No Data' : rep['total_contributions']
+                                    %td= rep['candidate_loans'].nil? ? 'No Data' : rep['candidate_loans']
+                                    %td= rep['total_disbursements'].nil? ? 'No Data' : rep['total_disbursements']
+                                    %td= rep['begin_cash'].nil? ? 'No Data' : rep['begin_cash']
+                                    %td= rep['end_cash'].nil? ? 'No Data' : rep['end_cash']
+                                    %td= rep['total_refunds'].nil? ? 'No Data' : rep['total_refunds']
+                                    %td= rep['debts_owed'].nil? ? 'No Data' : rep['debts_owed']
+                                    %td= rep['date_coverage_from'].nil? ? 'No Data' : rep['date_coverage_from']
+                                    %td= rep['date_coverage_to'].nil? ? 'No Data' : rep['date_coverage_to']

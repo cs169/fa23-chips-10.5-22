@@ -12,8 +12,10 @@ Scenario: Searching for Campaign Finance
   When I select "2010" from "search_terms_cycle"
   And I select "candidate-loan" from "search_terms_category"
   And I press "Search"
-  #TODO Add expected search results (might need Faraday)
-  Then I should see "CampaignFinance#search"
+  Then I should see "MCMAHON, LINDA"
+  And I should see "REP"
+  And I should see "CT"
+  And I should see "110694.0"
 
 Scenario: Accessing Campaign Finance from navbar
   When I am on the home page
