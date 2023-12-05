@@ -15,6 +15,9 @@ class CampaignFinanceController < ApplicationController
     @campaign_finance_search_results["results"].each do |r|
       if r&.[]("name") && r&.[]("state") && r&.[]("party") && r&.[]("district") && r&.[]("total_from_individuals") && r&.[]("total_from_pacs") && r&.[]("total_contributions") && r&.[]("candidate_loans") && r&.[]("total_disbursements")
         rep.push(r)
+      else
+        rep.push(r)
+        puts r
       end
     end
     @campaign_finance_search_results = rep
